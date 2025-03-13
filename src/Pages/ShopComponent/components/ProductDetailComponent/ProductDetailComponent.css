@@ -1,0 +1,47 @@
+.product-detail-brand{
+    font-weight: bold;
+    font-size: 40px;
+}
+.product-detail-price{
+    font-weight: bold;
+    font-size: 25px;
+}
+.product-detail-availability-avai{
+    font-size: 20px;
+}
+.product-detail-quantity-count{
+    border: 1px solid black;
+    width: 80px;
+    font-size: 25px;
+}
+.product-detail-quantity-click{
+    cursor: pointer;
+}
+.product-detail-quantity span{
+    font-size: 20px;
+}
+.product-detail-quantity-add-to-card{
+    background-color:#ff4faf ;
+    width: 15rem;
+}
+.product-detail-quantity-add-to-card:hover{
+    background-color:#ff209a ;
+}
+
+
+.product-detail-tips-options{
+    font-size: 20px;
+    text-align: center;
+    width: 12rem;
+    border: 1px solid gray;
+    padding: 5px;
+    cursor: pointer;
+}
+.product-detail-tips-options:hover{
+    border: 1px solid black;
+}
+.product-detail-tips-options.selected {
+    border: 3px solid black; /* Màu viền khi được chọn */
+    border-radius: 8px; /* Bo tròn góc */
+    padding: 5px;
+}

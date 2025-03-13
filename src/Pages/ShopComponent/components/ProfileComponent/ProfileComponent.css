@@ -1,0 +1,41 @@
+.redeem-button{
+    color: white;
+    background-color: black;
+    height: 3rem;
+    width: 12rem;
+    border-radius: 5px;
+    font-size: 20px;
+    margin-top: 5px;
+}
+.content-title{
+    font-size: 40px;
+    font-weight: bold;
+}
+.profile{
+    margin-bottom: 20px;
+}
+.profile-detail{
+    margin-bottom: 5rem;
+}
+.order-history-detail{
+    border-bottom: 1px solid black;
+    border-top:1px solid black;
+    padding: 20px 20px 20px 0px;
+}
+.profile-detail-edit input{
+    border:none;
+    border-bottom: 1px solid black;
+    width: 20rem;
+    outline: none ;
+}
+.profile-detail-edit button{
+    color: white;
+    background-color: gray;
+    height: 3rem;
+    width: 20rem;
+    border-radius: 5px;
+    font-size: 20px;
+}
+.product-list-img{
+    width: 70px;
+}

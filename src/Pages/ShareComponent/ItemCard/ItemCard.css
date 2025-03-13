@@ -1,0 +1,53 @@
+.item-card{
+    border: 2px solid black;
+}
+.card-img .img-fluid{
+    height: 10rem;
+    width: 15rem;
+}
+
+.card-add-to-card{
+    background-color:#ff4faf ;
+}
+.card-add-to-card:hover{
+    background-color:#ff209a ;
+}
+
+.product-detail-tips-options-card{
+    font-size: 15px;
+    text-align: center;
+    width: 5rem;
+    border: 1px solid gray;
+    padding: 5px;
+    cursor: pointer;
+}
+.product-detail-tips-options-card:hover{
+    border: 1px solid black;
+}
+.product-detail-tips-options-card.selected {
+    border: 3px solid black; /* Màu viền khi được chọn */
+    border-radius: 8px; /* Bo tròn góc */
+    padding: 5px;
+}
+
+.custom-alert {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 18px;
+    z-index: 1000;
+    text-align: center;
+    animation: fadeInOut 5s ease-in-out;
+  }
+  
+  @keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  

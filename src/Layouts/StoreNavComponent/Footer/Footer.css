@@ -1,0 +1,53 @@
+
+.footer-margin{
+    margin-top: 2rem;
+}
+.sign-up-button{
+    color: white;
+    background-color: black;
+    height: 3rem;
+    width: 10rem;
+    border-radius: 5px;
+}
+.email-footer{
+    width:20rem;
+    height: 3rem;
+    margin-right: 2px;
+    border-radius: 20px;
+}
+.footer-user-name{
+    font-weight: bold;
+    font-size: 30px;
+}
+.information{
+    padding-top: 5%;
+}
+.title-content-footer{
+    font-weight: bold;
+    font-size: 25px;
+}
+.items{
+    font-size: 20px;
+    width: fit-content;
+}
+.item-material{
+    align-self: flex-start;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+}
+.item-material:hover{
+    text-decoration:underline;
+}
+.items-icon{
+    font-size: 20px;
+    transition: filter 0.3s ease;
+}
+.items-icons:hover{
+    filter: blur(1px);
+}
+.copy-right{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+}

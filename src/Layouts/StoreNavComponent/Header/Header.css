@@ -1,0 +1,109 @@
+.container{
+   
+}
+.logo img{
+    height: 5em;
+    cursor: pointer;
+}
+.title-content{
+    font-size: 20px;
+    font-weight: normal;
+}
+.Title-Markers{
+    cursor: pointer;
+}
+.Dropdown-Markers{
+    position: absolute;
+    left: 22rem;
+    width: 12rem;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: white;
+    border: 1px solid gray;
+}
+
+.link-drop-header{
+    text-decoration: none;
+    color: black;
+}
+.Dropdown-ArtPaints{
+    position: absolute;
+    left: 31rem;
+    width: 12rem;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: white;
+    border: 1px solid gray;
+}
+.Title-Hotsale{
+    cursor: pointer;
+}
+.Dropdown-Support{
+    position: absolute;
+    left: 49rem;
+    width: 8rem;
+    padding: 15px;
+    border-radius: 15px;
+    background-color: white;
+    border: 1px solid gray;
+}
+.cart{
+    margin-right: 20px;
+    font-size: 2rem;
+}
+.information{
+    margin-top: 3px;
+    font-size: 2rem;
+    cursor: pointer;
+}
+.search{
+    font-size: 1.5rem;
+    margin-top: 2px;
+    margin-right: 10px;
+}
+.shopping-cart {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  .shopping-cart .cart {
+    font-size: 30px; /* Kích thước icon */
+  }
+.shopping-cart-quantity {
+   position: absolute;
+    top: -1px; /* Điều chỉnh vị trí lên trên */
+    right: -1px; /* Điều chỉnh vị trí sang phải */
+    background-color: red; /* Màu nền */
+    color: white; /* Màu chữ */
+    border-radius: 50%; /* Làm tròn */
+    width: 20px; 
+    height: 20px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .options-dropdown-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  
+  /* Menu dropdown */
+  .options-dropdown-menu-logout {
+    position: absolute;
+    top: 30px;
+    right: 0; /* Căn phải theo ảnh */
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    min-width: 120px;
+    text-align: center;
+    display: block;
+    z-index: 1000; /* Đảm bảo nằm trên các phần tử khác */
+  }

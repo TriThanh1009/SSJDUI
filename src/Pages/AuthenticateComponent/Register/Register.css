@@ -1,0 +1,11 @@
+.register-forgotpassword{
+    margin-bottom: 3rem;
+}
+.register{
+    margin-top: 1rem;
+}
+
+.register-title span{
+    font-size: 40px;
+    font-weight: bold;
+}

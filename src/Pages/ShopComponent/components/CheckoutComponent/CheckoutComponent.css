@@ -1,0 +1,60 @@
+
+.checkout-button{
+    width: 10rem;
+    height: 3rem;
+    color: white;
+    background-color: #3c9342;
+}
+
+.checkout-button:hover{
+    background-color: #1e4b21;
+}
+.register-forgotpassword{
+    margin-top: 20px;
+}
+.checkout-return-cart{
+    cursor: pointer;
+}
+.checkout-product-information{
+    border-left: solid 1px gray;
+}
+.checkout-product{
+    margin-left: 20px;
+}
+
+.checkout-product-img img{
+    width: 50px;
+    background-color: #1e4b21;
+}
+.checkout-product-name-detail{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+.checkout-product-category-detail{
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+.checkout-product-total{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-weight: bold;
+    margin-top:20px;
+    padding-right: 39px; /* Giữ tổng tiền ngay hàng với giá sản phẩm */
+}
+.checkout-payment-method img{
+    width: 50px;
+    cursor: pointer;
+}
+.checkout-payment-method img:hover{
+    border: 1px solid black;
+}
+.payment-img.selected {
+    border: 3px solid gray; /* Màu viền khi được chọn */
+    border-radius: 8px; /* Bo tròn góc */
+    padding: 5px;
+}
+

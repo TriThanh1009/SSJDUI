@@ -1,0 +1,28 @@
+.admin-layout {
+    display: flex; /* Kích hoạt Flexbox */
+    flex-direction: column; /* Sắp xếp theo cột: header -> content -> footer */
+    min-height: 100vh; /* Chiều cao tối thiểu bằng chiều cao màn hình */
+}
+
+.content {
+    flex: 1; /* Tự động co giãn để chiếm khoảng trống còn lại */
+    padding: 20px; /* Khoảng cách padding bên trong */
+    overflow-y: auto; /* Thêm thanh cuộn dọc nếu nội dung dài */
+}
+
+.admin-header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.admin-footer {
+    background-color: #fff;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px; /* Khoảng cách bên trong */
+    text-align: center; /* Canh giữa nội dung của footer */
+}
