@@ -107,12 +107,6 @@ const [categorys,setcategorys] = useState<CategoryModel[]>()
             <h1 className='text-center'>Create</h1>
         <div className='d-flex flex-row'>
             <div>
-            <div className="form-group row">
-                    <label className="col-sm-5 col-form-label">Image</label>
-                    <div className="col-sm-10">
-                        <input type="file" id="Image"   name="Image" onChange={handleFileChange}   className="form-control" />
-                    </div>
-                </div>
                 <div className="form-group row">
                     <label className="col-sm-5 col-form-label">Name</label>
                     <div className="col-sm-10">
@@ -142,16 +136,15 @@ const [categorys,setcategorys] = useState<CategoryModel[]>()
 
                     </div>
                 </div>
-                
-            </div>
-            <div>
-            <div className="form-group row">
+                <div className="form-group row">
                     <label className="col-sm-5 col-form-label">Size</label>
                     <div className="col-sm-10">
                         <input type="text" id="Size"   name="Size" onChange={handlechange}   className="form-control" />
 
                     </div>
                 </div>
+            </div>
+            <div>
                 <div className="form-group row">
                     <label className="col-sm-5 col-form-label">Price</label>
                     <div className="col-sm-10">
@@ -176,7 +169,12 @@ const [categorys,setcategorys] = useState<CategoryModel[]>()
                         </select>
                     </div>
                 </div>
-                
+                <div className="form-group row">
+                    <label className="col-sm-5 col-form-label">Image</label>
+                    <div className="col-sm-10">
+                        <input type="file" id="Image"   name="Image" onChange={handleFileChange}   className="form-control" />
+                    </div>
+                </div>
                 <div className='button-options-list d-flex flex-row gap-3' >
                     <button type='submit' className="button-options">Accept</button>
                     <button className="button-options" onClick={onCancel} >Cancel</button> 
