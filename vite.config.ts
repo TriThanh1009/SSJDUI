@@ -6,5 +6,5 @@ dotenv.config();
 console.log('ENV từ dotenv:', process.env.VITE_API_URL);
 export default defineConfig({
   plugins: [react()],
-  
+  base: './',
 })
