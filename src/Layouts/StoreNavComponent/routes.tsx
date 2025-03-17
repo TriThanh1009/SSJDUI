@@ -18,7 +18,7 @@ interface RouteConfig{
 }
 
 const routes: RouteConfig[]=[
-    {path: '/home',element:<HomeComponent/>},
+    {path: '',element:<HomeComponent/>},
     {path:'productdetail/:product',element:<ProductDetailComponent/>},
     //{path:'/login',element:<Login/>},
     //{path:'/forgot',element:<Forgotpassword/>},

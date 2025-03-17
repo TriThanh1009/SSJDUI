@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { StrictMode } from "react"; // ✅ Import StrictMode
 import { useEffect, useState } from "react";
-import { Routes, Route, HashRouter } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import App from "./App";
 import AppAdmin from "./AppAdmin";
 import Login from "./Pages/AuthenticateComponent/Login/Login";
@@ -50,8 +50,9 @@ const Main = () => {
 
   return (
     <StrictMode>
-      <HashRouter>
+      <BrowserRouter>
         <CartProvider>
+          asdasd
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
@@ -61,9 +62,9 @@ const Main = () => {
             ) : (
               <Route path="*" element={<App />} />
             )}
-                  </Routes>
+            </Routes>
         </CartProvider>
-      </HashRouter>
+      </BrowserRouter>
     </StrictMode>
   );
 };
