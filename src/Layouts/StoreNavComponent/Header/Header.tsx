@@ -48,7 +48,7 @@ const Header:React.FC=()=>{
     <div className="container d-flex justify-content-between">
         <div className='header-row-left d-flex gap-5 justify-content-start align-items-center'>
             <div className="logo">
-                <img onClick={()=>clicktonav("home")} src={logoimg} ></img>
+                <img onClick={()=>clicktonav("")} src={logoimg} ></img>
             </div>
             <div>
         <div className="options-dropdown-container">
@@ -109,7 +109,11 @@ const Header:React.FC=()=>{
                             <button onClick={LogoutFeature} className="logout-button">Logout</button>
                         </div> 
                         }
-                        {!user && <button onClick={()=>clicktonav("register")} className="logout-button">Register</button>}
+                        {!user &&
+                        <div className="dropdown-menu-logout d-flex flex-column">
+                            <button onClick={()=>clicktonav("register")} className="logout-button">Register</button>
+                        </div> 
+                        }
                 </div>
                 )}
             </div>
