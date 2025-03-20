@@ -14,7 +14,6 @@ const ItemCard:React.FC<props> = ({products}) =>{
   const { increaseCartQuantity} = useShoppingCart()
   const [selectheadtype, setselectheadtype] = useState<string>("");
   const [showAlert, setShowAlert] = useState(false);
-  const apiUrl = import.meta.env.VITE_API_GET_IMG;
   const navigate = useNavigate()
   const typeRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {

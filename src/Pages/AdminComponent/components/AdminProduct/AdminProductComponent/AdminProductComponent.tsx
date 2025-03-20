@@ -8,7 +8,6 @@ import { ProductModel } from "../../../../../Model/Product/ProductModel"
 
 import AdminProductDetailOptionsComponent from "../AdminProductDetailComponent/AdminProductDetailOptionsComponent"
 const AdminProductComponent:React.FC = () =>{
-    const apiUrl = import.meta.env.VITE_API_GET_IMG;
     const [products,setproducts] = useState<ProductModel[]>()
     const [showformoptions, setShowFormOptions] = useState(false);
     const [showformdetail,setshowformdetail] = useState(false)
