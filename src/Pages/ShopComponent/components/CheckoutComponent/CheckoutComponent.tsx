@@ -8,8 +8,6 @@ import { useShoppingCart } from '../../../../Hooks/useShoppingCart'
 import { getProductByID } from '../../../../Responsitories/ProductResponsitory'
 
 import { useNavigate } from 'react-router-dom'
-import { UserModel } from '../../../../Model/User/UserModel'
-import { getUserByID } from '../../../../Responsitories/UserResponsitory'
 import { OrderCreateModel } from '../../../../Model/Order/OrderCreateModel'
 import { createOrder } from '../../../../Responsitories/OrderResponsitory'
 import { CreateListOrderDetail } from '../../../../Responsitories/OrderDetailResponsitory'
@@ -19,7 +17,6 @@ const CheckoutComponent:React.FC = () =>{
     const [orderswdetail,setorderswdetail] = useState<OrderDetailwithProduct[]>()
     const [order,setorder] = useState<OrderCreateModel>()
     const [error,seterror] = useState<OrderCreateModel>()
-    const [user,setuser] = useState<UserModel>()
     const [total,settotal] = useState(0)
     const navigate = useNavigate()
     const userid = localStorage.getItem('id')
@@ -51,14 +48,8 @@ const CheckoutComponent:React.FC = () =>{
         }
     }, [orderswdetail]);
     useEffect(()=>{
-        fetchuserid()
     })
-    const fetchuserid = async()=>{
-        if(userid){
-          const userdata = await getUserByID(userid)
-          setuser(userdata)
-        }
-      }
+
 
     const handleOrderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -139,10 +130,10 @@ const CheckoutComponent:React.FC = () =>{
                 </div>
                 <div className='login-input'>
                     <div className='input-information d-flex flex-column justify-content-center gap-3'>
-                        <input type='text' name='customerName' onChange={handleOrderChange}  placeholder="Họ và tên"></input>
+                        <input type='text' name='customerName' onChange={handleOrderChange} onBlur={handleOrderChange}  placeholder="Họ và tên"></input>
                         {error?.customerName && <p style={{ color: "red" }}>{error?.customerName}</p>}
-                        <input type='text' name='shippingAddress' onChange={handleOrderChange} placeholder="Địa chỉ"></input>   
-                        <input type='text' name='customerPhone' onChange={handleOrderChange}  placeholder="Số điện thoại"></input>
+                        <input type='text' name='shippingAddress' onChange={handleOrderChange} onBlur={handleOrderChange} placeholder="Địa chỉ"></input>   
+                        <input type='text' name='customerPhone' onChange={handleOrderChange} onBlur={handleOrderChange}  placeholder="Số điện thoại"></input>
                         {error?.customerPhone && <p style={{ color: "red" }}>{error?.customerPhone}</p>}
                         {/* <select id='shippingUnitID' name='shippingUnitID' onChange={()=>handleOrderChange}>
                             <option value="1">Viettel Post</option>
