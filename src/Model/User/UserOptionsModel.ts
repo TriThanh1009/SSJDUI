@@ -1,5 +1,5 @@
 export interface UserOptionsModel{
-    id? : string
+    id : string
     userName? : string
     email? : string
     phoneNumber? : string

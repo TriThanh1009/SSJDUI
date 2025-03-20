@@ -58,7 +58,6 @@ const CheckoutComponent:React.FC = () =>{
           const userdata = await getUserByID(userid)
           setuser(userdata)
         }
-        console.log(user)
       }
 
     const handleOrderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -80,6 +79,7 @@ const CheckoutComponent:React.FC = () =>{
                 userID : userid,
                 orderDate : new Date().toISOString(),
                 orderStatus : "1",
+                shippingUnitID : "1",
                 totalPrice : total,
                 paymentMethod : "VietQR",
                 paymentStatus :0,
@@ -91,6 +91,7 @@ const CheckoutComponent:React.FC = () =>{
                 userID : "1",
                 orderDate : new Date().toISOString(),
                 orderStatus : "1",
+                shippingUnitID : "1",
                 totalPrice : total,
                 paymentMethod : "VietQR",
                 paymentStatus :0,
@@ -104,8 +105,7 @@ const CheckoutComponent:React.FC = () =>{
 
     
     const orderAccept = async (amount: number) => {
-        console.log(amount)
-        console.log(order)
+        
         if (order) {
             const orderdata = await createOrder(order);
             console.log(orderdata)
@@ -144,9 +144,9 @@ const CheckoutComponent:React.FC = () =>{
                         <input type='text' name='shippingAddress' onChange={handleOrderChange} placeholder="Địa chỉ"></input>   
                         <input type='text' name='customerPhone' onChange={handleOrderChange}  placeholder="Số điện thoại"></input>
                         {error?.customerPhone && <p style={{ color: "red" }}>{error?.customerPhone}</p>}
-                        <select id='shippingUnitID' name='shippingUnitID' onChange={()=>handleOrderChange}>
+                        {/* <select id='shippingUnitID' name='shippingUnitID' onChange={()=>handleOrderChange}>
                             <option value="1">Viettel Post</option>
-                        </select>
+                        </select> */}
                         {/* <div className='checkout-payment-method d-flex flex-row gap-2'>
                         <img 
                             src={logomomo} 
