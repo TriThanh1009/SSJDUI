@@ -36,7 +36,7 @@ const Footer:React.FC=()=>{
                     </span>
                     
                 </div>
-                <div className='information d-flex flex-row '>
+                <div className='information-footer d-flex flex-row '>
                     <div className='information-support col-3'>
                         <div className='support'>
                             <div className='title-content-footer'>

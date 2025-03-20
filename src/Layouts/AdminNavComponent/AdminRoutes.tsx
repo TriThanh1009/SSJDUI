@@ -38,7 +38,7 @@ const routes: RouteConfig[]=[
     //////
 
       ////Customer
-      {path: '/home',element:<HomeComponent/>},
+      {path: '/',element:<HomeComponent/>},
       {path:'productdetail/:product',element:<ProductDetailComponent/>},
       //{path:'/login',element:<Login/>},
       {path:'/forgot',element:<Forgotpassword/>},

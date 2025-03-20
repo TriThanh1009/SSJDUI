@@ -1,12 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as signalR from "@microsoft/signalr";
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
+
 class SignalRService {
     private connection: signalR.HubConnection;
 
     constructor() {
         this.connection = new signalR.HubConnectionBuilder()
-            .withUrl("http://localhost:5255/orderHub") // API SignalR
+            .withUrl(`${apiUrl}/orderHub`) // API SignalR
             .withAutomaticReconnect()
             .build();
     }

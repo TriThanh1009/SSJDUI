@@ -50,7 +50,7 @@ const ItemCard:React.FC<props> = ({products}) =>{
         </div>
       )}
       <div onClick={NavtoDetail} className="card-img p-3">
-        <img src={`${apiUrl}${products.image}`} className="img-fluid" />
+        <img src={products.image} className="img-fluid" />
       </div>
       <div className="card-body">
         <h5 className="card-title">{products.name}</h5>

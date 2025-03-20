@@ -30,7 +30,7 @@ function Login(){
                 if (getrole === "Admin") {
                     navigate("/admin/account");
                 } else if(getrole === "Customer")  {
-                    navigate("/home");
+                    navigate("/");
                 } else if(getrole === null || getrole === ""){
                     navigate("/login")
                 }
