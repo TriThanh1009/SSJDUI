@@ -30,12 +30,26 @@ const ItemCard:React.FC<props> = ({products}) =>{
   }, []);
   
   const addtocart = () => {
-    setShowAlert(true)
-    increaseCartQuantity(products.id,selectheadtype)
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 5000);
-  }
+    if (products.category === "Book") {
+      const headType = "none"; 
+      increaseCartQuantity(products.id, headType);
+      setShowAlert(true);
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 5000);
+    } 
+    else if (products.category !== "Book") {
+      if (!selectheadtype) {
+        alert("Vui lòng chọn kiểu đầu bút");
+      } else {
+        increaseCartQuantity(products.id, selectheadtype);
+        setShowAlert(true);
+        setTimeout(() => {
+          setShowAlert(false);
+        }, 5000);
+      }
+    }
+  };
 
   function NavtoDetail(){
     navigate(`/productdetail/${products.id}`);

@@ -5,11 +5,14 @@ import './ProfileComponent.css';
 import { editUser, GetUserProfileById } from '../../../../Responsitories/UserResponsitory';
 import { UserOrderProfile } from '../../../../Model/User/UserOrderProfile';
 import { UserOptionsModel } from '../../../../Model/User/UserOptionsModel';
+import { auth } from '../../../../Responsitories/Firebase';
 
 
 const ProfileComponent:React.FC = () => {
   const userId = localStorage.getItem('id');
   const apiUrl = import.meta.env.VITE_API_GET_IMG;
+  const [loginMethod] = useState(localStorage.getItem("loginMethod"))
+   const [googleuser, setgoogleuser] = useState(auth.currentUser);
   const [profile,setprofile] = useState<UserOrderProfile>()
   const [user,setuser] = useState<UserOptionsModel>({
           id : userId?? '',
@@ -27,10 +30,17 @@ const ProfileComponent:React.FC = () => {
     fetch()
   },[profile]);
   const fetch = async () => {
-    if(userId){
-      const profiledata = await GetUserProfileById(userId)
-      setprofile(profiledata)
-    }
+    if(loginMethod == "account"){
+      if(userId){
+        const profiledata = await GetUserProfileById(userId)
+        setprofile(profiledata)
+      }
+      }
+      if(loginMethod == "google"){
+          auth.onAuthStateChanged((googleuser) => {
+              setgoogleuser(googleuser); // Cập nhật lại user khi Firebase hoàn tất
+          });
+      }
     
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,7 +68,8 @@ const ProfileComponent:React.FC = () => {
       <div className="d-flex flex-column justify-content-center align-items-center gap-2">
         <span className='content-title'>My Account</span>
         <div className='d-flex flex-column justify-content-center align-items-center gap-2'>
-          <span>Welcome back, {profile?.userName}</span>
+        {profile &&<span>Welcome back, {profile?.userName}</span>}
+        {googleuser && <span>Xin chào, {auth.currentUser?.displayName}</span>}
           {/* <div>Your Points Balance : {profile?.point}</div> */}
         </div>
         <div>

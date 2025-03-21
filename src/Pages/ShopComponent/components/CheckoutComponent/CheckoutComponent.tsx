@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import './CheckoutComponent.css'
-import img from '../../../../Image/logo.jpg'
+
 import React, { useEffect, useState } from 'react'
 
 import { useShoppingCart } from '../../../../Hooks/useShoppingCart'
@@ -164,7 +164,7 @@ const CheckoutComponent:React.FC = () =>{
                     {Array.isArray(orderswdetail) && orderswdetail.map((orderwdetail) => (
                         <div key={orderwdetail.product.id} className="checkout-product-name-price d-flex flex-row justify-content-between align-items-center gap-2 ">
                             <div className='checkout-product-img'>
-                                <img src={img}></img>
+                                <img src={orderwdetail.product.image}></img>
                             </div>
                             <div className="checkout-product-name d-flex flex-column">
                                 <span className='checkout-product-name-detail'>{orderwdetail.product.name}</span>

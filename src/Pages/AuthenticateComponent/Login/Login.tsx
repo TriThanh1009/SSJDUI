@@ -6,6 +6,8 @@ import './Login.css'
 import { useEffect, useState } from 'react';
 import { LoginAccess } from '../../../Responsitories/LoginRespository';
 import { LoginModel } from '../../../Model/Login/LoginModel';
+import { signInWithPopup } from 'firebase/auth';
+ import { auth, googleProvider } from '../../../Responsitories/Firebase';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 
@@ -22,6 +24,20 @@ function Login(){
         
     };
     useEffect(() => {
+        handleLogin()
+    }, [])
+    useEffect(() => {
+        const handleStorageChange = () => {
+          setAccessToken(localStorage.getItem("accessToken"));
+        };
+      
+        window.addEventListener("storage", handleStorageChange);
+      
+        return () => {
+          window.removeEventListener("storage", handleStorageChange);
+        };
+      }, []);
+      const handleLogin = async () =>{
         if(accessToken){
             const decodeToken = jwtDecode<{ [key: string]: any }>(accessToken);
             const getrole = decodeToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
@@ -36,23 +52,24 @@ function Login(){
                 }
             }
         }
-    }, [])
-    useEffect(() => {
-        const handleStorageChange = () => {
-          setAccessToken(localStorage.getItem("accessToken"));
-        };
-      
-        window.addEventListener("storage", handleStorageChange);
-      
-        return () => {
-          window.removeEventListener("storage", handleStorageChange);
-        };
-      }, []);
-
+    }
+    const handleGoogleLogin = async () => {
+        try {
+          const result = await signInWithPopup(auth, googleProvider);
+          console.log(result.user)
+          localStorage.setItem('loginMethod',"google")
+          navigate("/");
+        } catch (err: any) {
+          console.error(err);
+        }
+      };
+        
+    
 
     const handleSubmit = async (e:React.FormEvent)=>{
         e.preventDefault()
         await LoginAccess(account)
+        localStorage.setItem('loginMethod',"account")
         window.location.reload()
     }
 
@@ -82,6 +99,9 @@ function Login(){
                         </div>
                     </div>
                 </form>
+                <div>
+                     <button className='login-with-google-button' onClick={handleGoogleLogin}>Đăng nhập với Google</button>
+                     </div>
                 <div className='register-forgotpassword d-flex flex-row gap-3'>
                     <span className='register-forgotpassword-items' onClick={navtoForgotpassword}>Forgot your password ?</span>
                     <span>/</span>

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
+
 
 import './Header.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,25 +10,34 @@ import logo from '../../../Image/chill.jpg'
 import React, { useEffect, useState } from 'react';
 import { useShoppingCart } from '../../../Hooks/useShoppingCart';
 import { useNavigate } from 'react-router-dom';
-import { UserModel } from '../../../Model/User/UserModel';
 import { getUserByID } from '../../../Responsitories/UserResponsitory';
+import { auth } from '../../../Responsitories/Firebase';
 
 const Header:React.FC=()=>{
     const [showMenu, setShowMenu] = useState("");
     const [userid] = useState(localStorage.getItem("id"));
-    const [user,setuser] = useState<UserModel>()
+    const [loginMethod] = useState(localStorage.getItem("loginMethod"))
+     const [userPhoto, setUserPhoto] = useState<string | undefined>();
+    //const [user,setuser] = useState<UserModel>()
     const {cartQuantity} = useShoppingCart()
     const navigate = useNavigate()
     useEffect(()=>{
-        fetchdatabyuserid()
-    })
+        fetchdatabyuser()
+    },[])
 
-    const fetchdatabyuserid = async() =>{
-        if(userid){
-            const data = await getUserByID(userid)
-            setuser(data)
+    const fetchdatabyuser = async() =>{
+        if(loginMethod == "account"){
+            if(userid){
+                await getUserByID(userid)
+                //setuser(data)
+            }
         }
-        
+        if(loginMethod == "google"){
+            
+            auth.onAuthStateChanged((googleuser) => {
+                setUserPhoto(googleuser?.photoURL as string)
+            });
+        }
     }
 
     function LogoutFeature(){
@@ -97,23 +107,25 @@ const Header:React.FC=()=>{
             <div className="account-container">
                 {/* Ảnh đại diện */}
                 <div className="account-image" onClick={() => handleMenuClick("logout")}>
-                    <img src={logo}  />
+                    <img src={userPhoto || logo}   />
                 </div>
 
                 {/* Menu Logout */}
                 {showMenu==="logout" && (
                     <div>
-                        {user &&
-                        <div className="dropdown-menu-logout d-flex flex-column gap-2">
-                            <button onClick={()=>clicktonav("profile")} className="logout-button">Profile</button>   
-                            <button onClick={LogoutFeature} className="logout-button">Logout</button>
-                        </div> 
-                        }
-                        {!user &&
-                        <div className="dropdown-menu-logout d-flex flex-column">
-                            <button onClick={()=>clicktonav("register")} className="logout-button">Register</button>
-                        </div> 
-                        }
+                        
+                         <div className="dropdown-menu-logout d-flex flex-column gap-2">
+                         {loginMethod &&
+                            <div className='d-flex flex-column gap-2'>
+                             <button onClick={()=>clicktonav("profile")} className="logout-button">Profile</button>   
+                             <button onClick={LogoutFeature} className="logout-button">Logout</button>
+                            </div> 
+                         }
+                         {!loginMethod && <button onClick={()=>clicktonav("login")} className="logout-button">Login</button>}
+                         </div>
+                         
+                         
+                         
                 </div>
                 )}
             </div>

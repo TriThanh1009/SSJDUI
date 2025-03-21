@@ -36,3 +36,8 @@
 .register-forgotpassword-items:hover{
     text-decoration: underline;
 }
+.login-with-google-button{
+    margin-top: 10px;
+    color: gray;
+    background-color: white;
+}

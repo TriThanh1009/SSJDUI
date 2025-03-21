@@ -37,6 +37,7 @@ const CartComponent: React.FC = () => {
       })      
     );
     setorder(orderList); // Cập nhật orders
+    console.log(orderList)
   };
 
   function NavToCheckout(){
@@ -75,7 +76,7 @@ const CartComponent: React.FC = () => {
                       <br />
                       <div className="d-flex flex-row gap-2">
                         <small>Type: {order.product.category}</small>
-                        <small>Head: {order.orderdetail?.headType}</small>
+                        {order.product.category != "Book" && <small>Head: {order.orderdetail?.headType}</small>}
                       </div>
                       
                     </div>
