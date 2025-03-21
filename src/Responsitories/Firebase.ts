@@ -18,7 +18,6 @@ const firebaseConfig = {
   appId: firebaseappid,
   measurementId: firebasemeasurementid
 };
-console.log(firebaseapikey)
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
