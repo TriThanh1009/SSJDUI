@@ -19,6 +19,7 @@ const Header:React.FC=()=>{
     const [loginMethod] = useState(localStorage.getItem("loginMethod"))
      const [userPhoto, setUserPhoto] = useState<string | undefined>();
     //const [user,setuser] = useState<UserModel>()
+    //
     const {cartQuantity} = useShoppingCart()
     const navigate = useNavigate()
     useEffect(()=>{
