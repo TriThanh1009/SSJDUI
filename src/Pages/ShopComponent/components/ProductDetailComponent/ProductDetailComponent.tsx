@@ -9,7 +9,6 @@ import { ProductDetailModel } from "../../../../Model/ProductDetail/ProductDetai
 import { getdescriptionByproductID} from "../../../../Responsitories/ProductDetailResponsitory"
 const ProductDetailComponent:React.FC = () =>{
     const {increaseCartQuantity} = useShoppingCart()
-    const apiUrl = import.meta.env.VITE_API_GET_IMG;
     const {product} = useParams()
     const [takeproduct,settakeproduct] = useState<ProductModel>()
     const [productdetail,setproductdetail] = useState<ProductDetailModel>()
@@ -42,7 +41,7 @@ const ProductDetailComponent:React.FC = () =>{
         <div>
             <div className="d-flex flex-row gap-5">
                 <div className="product-detail-img col-6">
-                    <img src={`${apiUrl}${takeproduct?.image}`}></img>
+                    <img src={takeproduct?.image}></img>
                 </div>
                 <div className="col-6">
                     <div className="product-detail-brand">

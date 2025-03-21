@@ -14,6 +14,9 @@
     width: 80px;
     font-size: 25px;
 }
+.product-detail-img img {
+    width: 40rem;
+}
 .product-detail-quantity-click{
     cursor: pointer;
 }

@@ -37,11 +37,11 @@ const AdminProductDetailOptionsComponent:React.FC<props> = ({productID,onCancel}
         try{
             if(productdetail){
                 if(!formedit){
-                    await createProductDetail(productdetail)
-                    alert('Create Success')
-                }else {
                     await editProductDetail(productdetail)
                     alert('Edit Success')
+                }else {
+                    await createProductDetail(productdetail)
+                    alert('Create Success')
                 }
                 
                 
@@ -81,7 +81,7 @@ const AdminProductDetailOptionsComponent:React.FC<props> = ({productID,onCancel}
                             </div>
                             <div className="d-flex justify-content-between">
                                 <div className="button-options-list d-flex flex-row gap-3">
-                                    <button onClick={clicktoedit} type='submit' className="button-options">Edit</button>
+                                    <button onClick={clicktoedit} className="button-options">Edit</button>
                                     <button className="button-options" onClick={onCancel} >Cancel</button> 
                                 </div>  
                             </div>   
@@ -95,25 +95,25 @@ const AdminProductDetailOptionsComponent:React.FC<props> = ({productID,onCancel}
                         <div className="form-group row"  >
                                 <label className="col-sm-5 col-form-label label-detail">Description</label>
                                 <div className="col-sm-12">
-                                    <input type="text" id="description"  name="description" onChange={handleChange}  className="form-control" />
+                                    <input type="text" id="description"  name="description" onChange={handleChange} onBlur={handleChange} className="form-control" />
                                 </div>
                             </div>
                             <div className="form-group row">
                                 <label className="col-sm-5 col-form-label label-detail">Warranty</label>
                                 <div className="col-sm-12">
-                                <input type="date" id="warranty"  name="warranty"     pattern="[a-zA-Z ]+"  onChange={handleChange} className="form-control" />
+                                <input type="date" id="warranty"  name="warranty"     pattern="[a-zA-Z ]+"  onChange={handleChange} onBlur={handleChange} className="form-control" />
                                 
                                 </div>
                             </div>
                             <div className="form-group row">
                                 <label className="col-sm-5 col-form-label label-detail">Origin</label>
                                 <div className="col-sm-12">
-                                <input type="text" id="origin"   name="origin" onChange={handleChange} className="form-control" />
+                                <input type="text" id="origin"   name="origin" onChange={handleChange} onBlur={handleChange} className="form-control" />
                                 </div>
                             </div>
                             <div className="d-flex justify-content-between">
                                 <div className="button-options-list d-flex flex-row gap-3">
-                                    <button onSubmit={handleSubmit} type='submit' className="button-options">Accept</button>
+                                    <button onClick={handleSubmit} className="button-options">Accept</button>
                                     <button className="btn btn-light" onClick={clicktoedit} >Cancel Edit</button> 
                                 </div>  
 

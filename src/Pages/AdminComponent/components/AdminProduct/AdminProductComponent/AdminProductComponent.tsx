@@ -21,7 +21,7 @@ const AdminProductComponent:React.FC = () =>{
         const data = await getProduct()
         if(data)
             setproducts(data)
-        console.log(products)
+        
     }
     
     const clicktoshowFormoption = ()=>{

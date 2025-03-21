@@ -65,6 +65,7 @@ const ItemCard:React.FC<props> = ({products}) =>{
                       <span>{products.category}</span>             
                   </div>
                 </div>
+                {products.category != "Book" &&
                 <div  className="product-detail-tips-card d-flex flex-row gap-3 mt-3">
                         <div onClick={() =>setselectheadtype('brushchisel')} className={`product-detail-tips-options-card ${selectheadtype === 'brushchisel' ? 'selected' : ''}`} >
                             <span>Chisel</span>
@@ -72,14 +73,17 @@ const ItemCard:React.FC<props> = ({products}) =>{
                         <div onClick={() =>setselectheadtype('brushfine')} className={`product-detail-tips-options-card ${selectheadtype === 'brushfine' ? 'selected' : ''}`}>
                             <span>Fine</span>
                         </div>
-                  </div>
+                  </div>    
+                }        
               </div>
+            
             </div>
             <div>        
                 <label className="d-block text-start fw-bold">Size</label>
-                <ul className="list-unstyled text-start d-flex flex-row gap-2">
-                    <li>{products.size}</li>
-                </ul>
+                <div className="list-unstyled text-start d-flex flex-row gap-2">
+                    {products.category == "Book" &&<span>{products.size} Pages</span>}
+                    {products.category != "Book" &&<span>{products.size} Pens</span>}
+                </div>
             </div>
           </div>
         </div>
