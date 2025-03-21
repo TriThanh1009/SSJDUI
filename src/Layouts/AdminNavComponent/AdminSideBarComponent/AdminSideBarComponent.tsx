@@ -42,6 +42,7 @@ const AdminSideBarComponent:React.FC = ()=>{
         <div className="list-component d-flex flex-column gap-2">
           <Link to="/admin/account">Account</Link>
           <Link to="/admin/product">Product</Link>
+          <Link to="/admin/brand">Brand</Link>
           <Link to="/admin/category">Category</Link>
           <Link to="/admin/membercard">Member Card</Link>
           <Link to="/admin/Order">Order</Link>

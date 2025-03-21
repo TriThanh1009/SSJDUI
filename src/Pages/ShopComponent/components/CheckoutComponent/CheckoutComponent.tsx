@@ -135,9 +135,9 @@ const CheckoutComponent:React.FC = () =>{
                         <input type='text' name='shippingAddress' onChange={handleOrderChange} onBlur={handleOrderChange} placeholder="Địa chỉ"></input>   
                         <input type='text' name='customerPhone' onChange={handleOrderChange} onBlur={handleOrderChange}  placeholder="Số điện thoại"></input>
                         {error?.customerPhone && <p style={{ color: "red" }}>{error?.customerPhone}</p>}
-                        {/* <select id='shippingUnitID' name='shippingUnitID' onChange={()=>handleOrderChange}>
+                        { <select id='shippingUnitID' name='shippingUnitID' onChange={()=>handleOrderChange}>
                             <option value="1">Viettel Post</option>
-                        </select> */}
+                        </select>}
                         {/* <div className='checkout-payment-method d-flex flex-row gap-2'>
                         <img 
                             src={logomomo} 
@@ -171,7 +171,7 @@ const CheckoutComponent:React.FC = () =>{
                                 <span className='checkout-product-category-detail'>Category: {orderwdetail.product.category}</span>
                             </div>
                             <div className="checkout-product-price mx-5">
-                                <span>{(orderwdetail.product.price) * orderwdetail.quantity} VND</span>
+                                <span>{(orderwdetail.product.price * orderwdetail.quantity).toLocaleString("vi-VN")} VND</span>
                             </div>
                         </div>
                     ))}

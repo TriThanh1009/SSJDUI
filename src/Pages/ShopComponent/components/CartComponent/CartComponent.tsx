@@ -81,7 +81,7 @@ const CartComponent: React.FC = () => {
                     </div>
                   </div>
                 </td>
-                <td>${(order.product.price * order.quantity)}</td>
+                <td>{(order.product.price * order.quantity).toLocaleString("vi-VN")} VND</td>
                 <td className="">
                   <i  onClick={()=>order.orderdetail.headType && decreaseCartQuantity(order.product.id,order.orderdetail.headType)} className="bi bi-caret-left"></i>
                   <span className="mx-2">{order.quantity}</span>

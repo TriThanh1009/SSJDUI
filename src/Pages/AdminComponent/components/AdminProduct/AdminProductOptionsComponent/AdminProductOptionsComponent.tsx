@@ -60,6 +60,7 @@ const [categorys,setcategorys] = useState<CategoryModel[]>()
                 [name]: value,
             }));
         }
+        console.log(product?.isActive)
 
         console.log(product?.CategoryID,product?.BrandID)
     }
@@ -107,6 +108,12 @@ const [categorys,setcategorys] = useState<CategoryModel[]>()
             <h1 className='text-center'>Create</h1>
         <div className='d-flex flex-row'>
             <div>
+            <div className="form-group row">
+                    <label className="col-sm-5 col-form-label">Image</label>
+                    <div className="col-sm-10">
+                        <input type="file" id="Image"   name="Image" onChange={handleFileChange}   className="form-control" />
+                    </div>
+                </div>
                 <div className="form-group row">
                     <label className="col-sm-5 col-form-label">Name</label>
                     <div className="col-sm-10">
@@ -136,15 +143,16 @@ const [categorys,setcategorys] = useState<CategoryModel[]>()
 
                     </div>
                 </div>
-                <div className="form-group row">
+                
+            </div>
+            <div>
+            <div className="form-group row">
                     <label className="col-sm-5 col-form-label">Size</label>
                     <div className="col-sm-10">
                         <input type="text" id="Size"   name="Size" onChange={handlechange}   className="form-control" />
 
                     </div>
                 </div>
-            </div>
-            <div>
                 <div className="form-group row">
                     <label className="col-sm-5 col-form-label">Price</label>
                     <div className="col-sm-10">
@@ -162,17 +170,11 @@ const [categorys,setcategorys] = useState<CategoryModel[]>()
                 <div className="form-group row">
                     <label className="col-sm-5 col-form-label">Active</label>
                     <div className="col-sm-10">
-                    <select id="CategoryID" name='CategoryID' onChange={handlechange} className='form-control'>
+                    <select id="isActive" name='isActive' onChange={handlechange} onBlur={handlechange} className='form-control'>
                             <option value="">-- Tình trạng -- </option>
                             <option value="0">Hết hàng</option>
                             <option value="1">Còn hàng</option>
                         </select>
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <label className="col-sm-5 col-form-label">Image</label>
-                    <div className="col-sm-10">
-                        <input type="file" id="Image"   name="Image" onChange={handleFileChange}   className="form-control" />
                     </div>
                 </div>
                 <div className='button-options-list d-flex flex-row gap-3' >

@@ -1,4 +1,5 @@
 import AdminAccountComponent from "../../Pages/AdminComponent/components/AdminAccount/AdminAccountComponent/AdminAccountComponent";
+import AdminBrandComponent from "../../Pages/AdminComponent/components/AdminBrand/AdminBrandComponent/AdminBrandComponent";
 import AdminCategoryComponent from "../../Pages/AdminComponent/components/AdminCategory/AdminCategoryComponent/AdminCategoryComponent";
 import AdminMemberCardComponent from "../../Pages/AdminComponent/components/AdminMemberCard/AdminMemberCardComponent/AdminMemberCardComponent";
 import AdminOrderComponent from "../../Pages/AdminComponent/components/AdminOrder/AdminOrderComponent/AdminOrderComponent";
@@ -29,6 +30,7 @@ const routes: RouteConfig[]=[
       //Admin
       {path: '/admin/product',element: <AdminProductComponent />,},
       {path: '/admin/account',element: <AdminAccountComponent />,},
+      {path: '/admin/brand', element: <AdminBrandComponent />,},
       {path: '/admin/category', element: <AdminCategoryComponent />,},
       {path: '/admin/membercard',element: <AdminMemberCardComponent />,},
       {path: '/admin/order',element: <AdminOrderComponent />,},

@@ -7,9 +7,9 @@ import { editPromotion, createPromotion } from '../../../../../Responsitories/Pr
 
 interface Props {
     onCancel: () => void; // Định nghĩa prop onCancel
-    selectedId: string;
+    selectedID: string;
   }
-const AdminUnitShipOptionsComponent:React.FC<Props> = ({onCancel, selectedId})=>{
+const AdminUnitShipOptionsComponent:React.FC<Props> = ({onCancel, selectedID})=>{
     const [unitship, setunitship] = useState<UnitShipOptionsModel>();
     const [error, seterror] = useState<UnitShipOptionsModel>();
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,14 +21,15 @@ const AdminUnitShipOptionsComponent:React.FC<Props> = ({onCancel, selectedId})=>
               }
         }
 
-        if (selectedId) {
+        if (selectedID) {
             setunitship(prev => ({
                 ...prev,
-                id: selectedId,
+                id: selectedID,
             }));
         }
         setunitship((prev) => ({
             ...prev,
+            id : "1",
             [name]: value,
         }));
         seterror({...error,[name] : errorMsg})
@@ -40,7 +41,7 @@ const AdminUnitShipOptionsComponent:React.FC<Props> = ({onCancel, selectedId})=>
     
         try {
             // Use conditional logic to decide whether to create or edit
-            if (selectedId) {
+            if (selectedID) {
                 await editPromotion(unitship);
                 alert('Edit Success!');
             } else {
@@ -58,10 +59,13 @@ const AdminUnitShipOptionsComponent:React.FC<Props> = ({onCancel, selectedId})=>
     return(
     <form className="form" onSubmit={handleSubmit} >
         <div className="form-group row" >
-            <label className="col-sm-5 col-form-label">ID</label>
             <div className="col-sm-10">
-                {selectedId && <input type="text" id="id"  name="id" value={selectedId}   onChange={handleChange}  className="form-control" />}
-                {!selectedId && <input type="text" id="id"  name="id" onChange={handleChange}  className="form-control" />}
+            {selectedID && 
+                <div>
+                        <label className="col-sm-5 col-form-label"> ID </label>
+                        <input type="text" id="id" value={selectedID} onChange={handleChange}  className="form-control" />
+                </div>
+            }
             </div>
         </div>
         <div className="form-group row">

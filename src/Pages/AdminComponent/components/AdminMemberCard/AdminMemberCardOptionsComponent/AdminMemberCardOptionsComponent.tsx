@@ -21,6 +21,7 @@ const AdminMemberCardOptionsComponent:React.FC<Props> = ({onCancel,selectedID}) 
         }
         setmembercard((prev)=>({
             ...prev,
+            id:"1",
             [name]:value,
         }))
     }
@@ -41,9 +42,12 @@ const AdminMemberCardOptionsComponent:React.FC<Props> = ({onCancel,selectedID}) 
         <form className="form" onSubmit={handlesubmit} >
             <div className="form-group row">
                 <div className="col-sm-10">
-                <label className="col-sm-5 col-form-label"> ID </label>
-                {selectedID && <input type="text" id="id" value={selectedID} onChange={handlechange}  className="form-control" /> }
-                {!selectedID && <input type="text" id="id" onChange={handlechange}  className="form-control" /> }
+                {selectedID && 
+                <div>
+                        <label className="col-sm-5 col-form-label"> ID </label>
+                        <input type="text" id="id" value={selectedID} onChange={handlechange}  className="form-control" />
+                </div>
+            }
                 </div>
             </div>
             <div className="form-group row">

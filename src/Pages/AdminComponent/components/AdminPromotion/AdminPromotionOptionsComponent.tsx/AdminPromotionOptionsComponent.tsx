@@ -7,20 +7,21 @@ import { editPromotion, createPromotion } from '../../../../../Responsitories/Pr
 
 interface Props {
     onCancel: () => void; // Định nghĩa prop onCancel
-    selectedId: string;
+    selectedID: string;
   }
-const AdminPromotionOptionsComponent:React.FC<Props> = ({onCancel, selectedId})=>{
+const AdminPromotionOptionsComponent:React.FC<Props> = ({onCancel, selectedID})=>{
     const [promotion, setpromotions] = useState<PromotionOptionsModel>();
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        if (selectedId) {
+        if (selectedID) {
             setpromotions(prev => ({
                 ...prev,
-                id: selectedId,
+                id: selectedID,
             }));
         }
         setpromotions((prev) => ({
             ...prev,
+            id : "1",
             [name]: value,
         }));
         
@@ -31,7 +32,7 @@ const AdminPromotionOptionsComponent:React.FC<Props> = ({onCancel, selectedId})=
     
         try {
             // Use conditional logic to decide whether to create or edit
-            if (selectedId) {
+            if (selectedID) {
                 await editPromotion(promotion);
                 alert('Edit Success!');
             } else {
@@ -49,10 +50,13 @@ const AdminPromotionOptionsComponent:React.FC<Props> = ({onCancel, selectedId})=
     return(
     <form className="form" onSubmit={handleSubmit} >
         <div className="form-group row" >
-            <label className="col-sm-5 col-form-label">ID</label>
             <div className="col-sm-10">
-                {selectedId && <input type="text" id="id"  name="id" value={selectedId}   onChange={handleChange}  className="form-control" />}
-                {!selectedId && <input type="text" id="id"  name="id" onChange={handleChange}  className="form-control" />}
+            {selectedID && 
+                <div>
+                        <label className="col-sm-5 col-form-label"> ID </label>
+                        <input type="text" id="id" value={selectedID} onChange={handleChange}  className="form-control" />
+                </div>
+            }
             </div>
         </div>
         <div className="form-group row">

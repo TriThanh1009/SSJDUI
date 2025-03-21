@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react"
 
 import clsx from 'clsx'
-import AdminCategoryOptionsComponent from "../AdminCategoryOptionsComponent/AdminCategoryOptionsComponent"
-import { CategoryModel } from "../../../../../Model/Category/CategoryModel"
-import { getCategory, deleteCategory } from "../../../../../Responsitories/CategoryResponsitory"
+import { BrandModel } from "../../../../../Model/Brand/BrandModel";
+import AdminBrandOptionsComponent from "../AdminBrandOptionsComponent/AdminBrandOptionsComponent";
+import { deleteBrand, getBrand } from "../../../../../Responsitories/BrandResponsitory";
 
-const AdminCategoryComponent:React.FC = () =>{
-    const[categorys,setcategorys] = useState<CategoryModel[]>()
+
+const AdminBrandComponent:React.FC = () =>{
+    const[brands,setbrands] = useState<BrandModel[]>()
     const [showformoptions, setShowFormOptions] = useState(false);
     let childpage
     const [getid,setgetid] = useState('');
@@ -19,14 +20,14 @@ const AdminCategoryComponent:React.FC = () =>{
         setShowFormOptions(false)
     }
     if(showformoptions){
-        childpage = <AdminCategoryOptionsComponent selectedID={getid} onCancel={onCancel} />
+        childpage = <AdminBrandOptionsComponent selectedID={getid} onCancel={onCancel} />
     } else childpage = <div></div>
     useEffect(()=>{
         fetch()
     })
     const fetch = async () =>{
-        const data = await getCategory()
-        setcategorys(data)
+        const data = await getBrand()
+        setbrands(data)
     }
 
     const handleEdit = (id:string)=>{
@@ -34,7 +35,7 @@ const AdminCategoryComponent:React.FC = () =>{
         setgetid(id)
     }
     const onDelete = async (id:string)=>{
-        await deleteCategory(id)
+        await deleteBrand(id)
         window.location.reload()
     }
 
@@ -50,18 +51,18 @@ const AdminCategoryComponent:React.FC = () =>{
                                 <table className="table table-bordered" id="dataTable" width="100%" >
                                     <thead>
                                         <tr className="">
-                                            <th>Thể loại</th>
+                                            <th>Hãng</th>
                                             <th>Options</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        {Array.isArray(categorys) && categorys.map((category)=>(
-                                            <tr key={category.id}>
-                                                <td>{category.name}</td>
+                                        {Array.isArray(brands) && brands.map((brand)=>(
+                                            <tr key={brand.id}>
+                                                <td>{brand.name}</td>
                                                 <td className="td-options d-flex flex-row gap-2">
-                                                <i onClick={()=>handleEdit(category.id)} className="options-icon bi bi-pen"></i>
-                                                <i onClick={()=>onDelete(category.id)} className="options-icon bi bi-x-octagon"></i>
+                                                <i onClick={()=>handleEdit(brand.id)} className="options-icon bi bi-pen"></i>
+                                                <i onClick={()=>onDelete(brand.id)} className="options-icon bi bi-x-octagon"></i>
                                                 </td>
                                                 
                                             </tr>
@@ -80,4 +81,4 @@ const AdminCategoryComponent:React.FC = () =>{
 }
 
 
-export default AdminCategoryComponent
+export default AdminBrandComponent

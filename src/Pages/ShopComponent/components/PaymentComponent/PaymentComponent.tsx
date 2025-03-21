@@ -28,7 +28,10 @@ const PaymentComponent = () => {
                 )}
             </div>
             <div className="d-flex flex-column gap-2">
-                 
+                 <span>Số tài khoản : 1017965388</span>
+                 <span>Chủ tài khoản : Nguyễn Trí Thanh</span>
+                 <span>Khi thanh toán xong, các bạn vui lòng gửi hình ảnh thanh toán qua zalo: 0358171720 ạ.</span>
+                 <span>Cảm ơn bạn đã tin tưởng và ủng hộ.</span>
             </div>
 
 

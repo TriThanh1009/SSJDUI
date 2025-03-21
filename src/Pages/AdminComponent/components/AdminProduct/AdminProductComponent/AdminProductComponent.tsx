@@ -21,6 +21,7 @@ const AdminProductComponent:React.FC = () =>{
         const data = await getProduct()
         if(data)
             setproducts(data)
+        console.log(products)
     }
     
     const clicktoshowFormoption = ()=>{
@@ -88,7 +89,7 @@ const AdminProductComponent:React.FC = () =>{
                                                 <td>{product.size}</td>
                                                 <td>{product.price.toLocaleString("vi-VN")}</td>
                                                 <td>{product.stock}</td>
-                                                <td>{product.isActive === "1" ? "Còn hàng" : "Hết hàng"}</td>
+                                                <td>{product.isActive == "1" ? "Còn hàng" : "Hết hàng"}</td>
                                                 <td className="product-list-img"><img src={product.image}  /></td>
                                                 <td className="td-options d-flex flex-row gap-2">
                                                 <i onClick={()=>handleEdit(product.id)} className="options-icon bi bi-pen"></i>

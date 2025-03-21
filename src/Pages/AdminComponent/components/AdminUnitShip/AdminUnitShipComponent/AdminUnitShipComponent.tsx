@@ -26,7 +26,7 @@ const AdminUnitShipComponent:React.FC = () =>{
         setShowFormOptions(false)
     }
     if(showformoptions){
-        childpage = <AdminUnitShipOptionsComponent selectedId={getid} onCancel={onCancel}/>
+        childpage = <AdminUnitShipOptionsComponent selectedID={getid} onCancel={onCancel}/>
     } else childpage = <div></div>
     
     const handleEdit = (id:string)=>{

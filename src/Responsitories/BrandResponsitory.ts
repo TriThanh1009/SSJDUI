@@ -16,7 +16,7 @@ export const getBrandByID = async(id : string)=>{
     return response.data
 }
 
-export const createBrandy = async(data:any)=>{
+export const createBrand = async(data:any)=>{
     const response = await axios.post(`${apiUrl}/Brand/CreateBrand`,JSON.stringify(data),{
         headers:{
             "Content-Type" : "application/json"

@@ -27,7 +27,7 @@ const AdminPromotionComponent:React.FC = () =>{
         setShowFormOptions(false)
     }
     if(showformoptions){
-        childpage = <AdminPromotionOptionsComponent selectedId={getid} onCancel={onCancel}/>
+        childpage = <AdminPromotionOptionsComponent selectedID={getid} onCancel={onCancel}/>
     } else childpage = <div></div>
     
     const handleEdit = (id:string)=>{
