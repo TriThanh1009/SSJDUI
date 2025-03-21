@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 
@@ -37,7 +38,7 @@ const ProfileComponent:React.FC = () => {
       }
       }
       if(loginMethod == "google"){
-          auth.onAuthStateChanged((googleuser) => {
+          auth.onAuthStateChanged((googleuser : any) => {
               setgoogleuser(googleuser); // Cập nhật lại user khi Firebase hoàn tất
           });
       }

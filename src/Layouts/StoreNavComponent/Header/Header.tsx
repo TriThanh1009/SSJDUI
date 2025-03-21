@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 
@@ -35,7 +36,7 @@ const Header:React.FC=()=>{
         }
         if(loginMethod == "google"){
             
-            auth.onAuthStateChanged((googleuser) => {
+            auth.onAuthStateChanged((googleuser : any) => {
                 setUserPhoto(googleuser?.photoURL as string)
             });
         }
