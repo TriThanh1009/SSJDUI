@@ -8,11 +8,8 @@ import { getProduct } from '../../../../Responsitories/ProductResponsitory';
 const HomeComponent:React.FC = () =>{
   const [products,setproducts] = useState<ProductModel[]>()
   const [isMobile, setIsMobile] = useState<boolean>(false)
+
       useEffect(()=>{
-        const fetch = async() =>{
-          const data = await getProduct()
-          setproducts(data)
-        }
         fetch()
         handleResize()
         window.addEventListener('resize', handleResize)
@@ -21,6 +18,10 @@ const HomeComponent:React.FC = () =>{
           window.removeEventListener('resize', handleResize)
         }
       },[])
+      const fetch = async() =>{
+        const data = await getProduct()
+        setproducts(data)
+      }
       const handleResize = () => {
         setIsMobile(window.innerWidth <= 768)
       }

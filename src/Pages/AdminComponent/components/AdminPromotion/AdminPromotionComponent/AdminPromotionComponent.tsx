@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from "react"
 
 import clsx from 'clsx'
 import AdminPromotionOptionsComponent from "../AdminPromotionOptionsComponent.tsx/AdminPromotionOptionsComponent"
 import { PromotionModel } from "../../../../../Model/Promotion/PromotionModel"
-import { deletePromotion, getPromotion } from "../../../../../Responsitories/PromotionResponsitory"
+import { deletePromotion, getPromotionPaging } from "../../../../../Responsitories/PromotionResponsitory"
+import { PagingModel } from "../../../../../Model/Paging/PagingModel"
 
 
 
@@ -11,13 +13,19 @@ const AdminPromotionComponent:React.FC = () =>{
     const [promotions,setPromotions] = useState<PromotionModel[]>()
     const [showformoptions, setShowFormOptions] = useState(false);
     const [getid,setgetid] = useState('');
+    const [paging] = useState<PagingModel>({
+        keyword: '',
+        pageindex: 1,
+        pagesize: 10
+    })
     let childpage
     useEffect(()=>{
         fetch()
     },[])
     const fetch = async () =>{
-        const data = await getPromotion()
-        setPromotions(data)
+        await getPromotionPaging(paging).then((res)=>{
+            setPromotions(res.items)
+        })
     }
     const clicktoshowFormoption = ()=>{
         setgetid('')

@@ -30,4 +30,6 @@
 .options-icon{
   cursor: pointer;
 }
-
+.table-title{
+  font-size: 20px;
+}

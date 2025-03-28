@@ -33,10 +33,6 @@ const AdminHeaderComponent:React.FC = ()=>{
     <div className='admin-container'>
       <div className='admin-header d-flex flex-row justify-content-between align-items-center'>
         <div className='admin-header-left'>
-          <div className='header-search'>
-            <input className='header-search-input' placeholder='  Search for....'></input>
-            {/* <i className="bi bi-search"></i> */}
-          </div>
         </div>
         <div className='admin-header-right d-flex flex-row justify-content-center align-items-center gap-3'>
         <div className="notification-container">

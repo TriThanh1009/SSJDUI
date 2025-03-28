@@ -1,39 +1,46 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import axios from 'axios'
+import { PagingModel } from '../Model/Paging/PagingModel';
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
 
 export const getPromotion = async()=>{
-    const response = await axios.get(`${apiUrl}/Promotion`)
-    return response.data
+    return (await axios.get(`${apiUrl}/Promotion`)).data
+    
+}
+export const getPromotionPaging = async(paging : PagingModel)=>{
+    if(paging.keyword)
+        return (await axios.get(`${apiUrl}/Promotion/GetPromotionPaging?Keyword=${paging.keyword}&PageIndex=${paging.pageindex}&PageSize=${paging.pagesize}`)).data
+    return (await axios.get(`${apiUrl}/Promotion/GetPromotionPaging?PageIndex=${paging.pageindex}&PageSize=${paging.pagesize}`)).data
+    
 }
 
 export const getPromotionByID = async(id : string)=>{
-    const response = await axios.get(`${apiUrl}/Promotion/${id}`)
-    return response.data
+    return (await axios.get(`${apiUrl}/Promotion/${id}`)).data
+    
 }
 
 export const createPromotion = async(data:any)=>{
-    const response = await axios.post(`${apiUrl}/Promotion/CreatePromotion`,JSON.stringify(data),{
+    return await axios.post(`${apiUrl}/Promotion/CreatePromotion`,JSON.stringify(data),{
         headers:{
             "Content-Type" : "application/json"
         }
     })
-    return response.data
+    
 }
 
 export const editPromotion = async(data:any)=>{
-    const response = await axios.put(`${apiUrl}/Promotion/EditPromotion`,JSON.stringify(data),{
+    return await axios.put(`${apiUrl}/Promotion/EditPromotion`,JSON.stringify(data),{
         headers:{
             "Content-Type" : "application/json"
         }
     })
-    return response.data
+    
 }
 
 export const deletePromotion = async(id : string)=>{
-    const response = await axios.delete(`${apiUrl}/Promotion?${id}`)
-    return response.data
+    return (await axios.delete(`${apiUrl}/Promotion?${id}`)).data
+    
 }

@@ -6,8 +6,9 @@
 import './Header.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import logoimg from '../../../Image/logo.jpg'
+import logoimg from '../../../Image/shoplogo.jpg'
 import logo from '../../../Image/chill.jpg'
+import shopeelogo from '../../../Image/shopee.png'
 import React, { useEffect, useState } from 'react';
 import { useShoppingCart } from '../../../Hooks/useShoppingCart';
 import { useNavigate } from 'react-router-dom';
@@ -99,6 +100,12 @@ const Header:React.FC=()=>{
                     <button onClick={()=>clicktonav("")} className="logout-button">Instagram</button>
                 </div>
                 )}
+            </div>
+        </div>
+        <div>
+        <div className='options-shopee' onClick={() => window.location.href = "https://shopee.vn/88__ehqdmj"} >
+            <img src={shopeelogo}></img>
+            Shopee
             </div>
         </div>
         </div>

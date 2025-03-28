@@ -107,3 +107,10 @@
     display: block;
     z-index: 1000; /* Đảm bảo nằm trên các phần tử khác */
   }
+.options-shopee img{
+    cursor: pointer;
+    width: 30rem;
+}
+.options-shopee{
+    cursor: pointer;
+}

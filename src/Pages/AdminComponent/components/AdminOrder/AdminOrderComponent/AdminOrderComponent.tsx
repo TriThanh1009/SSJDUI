@@ -1,26 +1,56 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import { OrderModel } from "../../../../../Model/Order/OrderModel"
-import { ChangePaymentStatus, getOrder, getOrderByID } from "../../../../../Responsitories/OrderResponsitory"
+import { ChangePaymentStatus, getOrderByID, getOrderPaging } from "../../../../../Responsitories/OrderResponsitory"
 import  './AdminOrderComponent.css'
 import failure from "../../../../../Image/failure.png"
 import success from "../../../../../Image/success.png"
 import AdminOrderDetailComponent from "../AdminOrderDetailComponent/AdminOrderDetailComponent"
+import { PagingModel } from "../../../../../Model/Paging/PagingModel"
+import SearchInput from "../../Common/SearchInput/SearchInput"
+import Pagination from "../../Common/Pagination"
 
 const AdminOrderComponent:React.FC = () =>{
     const [orders,setorders] = useState<OrderModel[]>()
     const [status, setStatus] = useState<{ [key: string]: number }>({});
     const [showformdetail,setshowformdetail] = useState(false)
     const [getorderid,setorderid] = useState("")
+    const [paging, setPaging] = useState<PagingModel>({
+        keyword: '',
+        pageindex: 1,
+        pagesize: 5
+    })
     let formdetail
 
     useEffect(()=>{
         fetch()
-    },[])
+    },[paging])
     const fetch = async () =>{
-        const data = await getOrder()
-        setorders(data)
+        try {
+            const res = await getOrderPaging(paging);
+            if (res) {
+                setorders(res.items || []);
+            }
+        } catch (error) {
+            console.error('Error fetching accounts:', error);
+        }
     }
+
+    const handleSearch = useCallback((keyword: string) => {
+        setPaging(prev => ({
+            ...prev,
+            keyword,
+            pageindex: 1
+        }));
+    }, []);
+
+    const handlePageChange = (newPage: number) => {
+        setorders([]);
+        setPaging(prev => ({
+            ...prev,
+            pageindex: newPage
+        }));
+    };
 
     function clicktoshowformdetail(id: string){
         setorderid(id)
@@ -43,8 +73,9 @@ const AdminOrderComponent:React.FC = () =>{
 
     return (
                     <div className="card shadow mb-4">
-                        <div className="card-header py-3 d-flex flex-row justify-content-between">
-                            <h6 className="m-0 font-weight-bold text-primary">Order Table</h6>
+                        <h6 className="table-title m-2 font-weight-bold text-primary mt-2">Order Table</h6>
+                        <div className="card-header py-3 d-flex flex-row justify-content-between">                     
+                            <SearchInput onSearch={handleSearch} />
                             {/* <button className="button-options">Create</button>  */}
                         </div>
                         <div className="card-body">
@@ -92,6 +123,10 @@ const AdminOrderComponent:React.FC = () =>{
                                     </tbody>
                                 </table>
                             </div>
+                            <Pagination 
+                                pageSize={paging.pagesize}
+                                onPageChange={handlePageChange}
+                            />
                         </div>
                         <div className="detail-page">
                                 {formdetail}

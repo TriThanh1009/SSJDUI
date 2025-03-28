@@ -1,22 +1,30 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from "react"
 
 import clsx from 'clsx'
 import AdminUnitShipOptionsComponent from "../AdminUnitShipOptionsComponent/AdminUnitShipOptionsComponent"
 import { UnitShipModel } from "../../../../../Model/UnitShip/UnitShipModel"
-import { getUnitShip, deleteUnitShip } from "../../../../../Responsitories/UnitShipResponsitory"
+import {  deleteUnitShip, getUnitShipPaging } from "../../../../../Responsitories/UnitShipResponsitory"
+import { PagingModel } from "../../../../../Model/Paging/PagingModel"
 
 
 const AdminUnitShipComponent:React.FC = () =>{
     const [unitships,setUnitShips] = useState<UnitShipModel[]>()
     const [showformoptions, setShowFormOptions] = useState(false);
     const [getid,setgetid] = useState('');
+    const [paging] = useState<PagingModel>({
+        keyword: '',
+        pageindex: 1,
+        pagesize: 10
+    })
     let childpage       
     useEffect(()=>{
         fetch()
     },[])
     const fetch = async () =>{
-        const data = await getUnitShip()
-        setUnitShips(data)
+        await getUnitShipPaging(paging).then((res)=>{
+            setUnitShips(res.items)
+        })
     }
     const clicktoshowFormoption = ()=>{
         setgetid('')

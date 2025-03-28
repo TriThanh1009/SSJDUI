@@ -1,28 +1,58 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect, useState } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 
 import AdminProductOptionsComponent from "../AdminProductOptionsComponent/AdminProductOptionsComponent"
 import './AdminProductComponent.css'
-import { deleteProduct, getProduct } from "../../../../../Responsitories/ProductResponsitory"
+import { deleteProduct,  getProductPaging } from "../../../../../Responsitories/ProductResponsitory"
 import { ProductModel } from "../../../../../Model/Product/ProductModel"
 
 import AdminProductDetailOptionsComponent from "../AdminProductDetailComponent/AdminProductDetailOptionsComponent"
+import { PagingModel } from "../../../../../Model/Paging/PagingModel"
+import SearchInput from "../../Common/SearchInput/SearchInput"
+import Pagination from "../../Common/Pagination"
 const AdminProductComponent:React.FC = () =>{
     const [products,setproducts] = useState<ProductModel[]>()
     const [showformoptions, setShowFormOptions] = useState(false);
-    const [showformdetail,setshowformdetail] = useState(false)
+    const [showformdetail,setshowformdetail] = useState(false) 
+    const [paging,setPaging] = useState<PagingModel>({
+        keyword: '',
+        pageindex: 1,
+        pagesize: 5
+    })
     let childpage
     let formdetail
     const [getid,setgetid] = useState('');
-     useEffect(()=>{
-         fetch()
-     })
-     const fetch = async()=>{
-        const data = await getProduct()
-        if(data)
-            setproducts(data)
-        
-    }
+    useEffect(()=>{
+            fetch()
+        },[paging]) 
+    
+        const fetch = async () =>{
+            try {
+                const res = await getProductPaging(paging);
+                if (res) {
+                    setproducts(res.items || []);
+
+                }
+            } catch (error) {
+                console.error('Error fetching brands:', error);
+            }
+        }
+    
+        const handleSearch = useCallback((keyword: string) => {
+            setPaging(prev => ({
+                ...prev,
+                keyword,
+                pageindex: 1
+            }));
+        }, []);
+    
+        const handlePageChange = (newPage: number) => {
+            setproducts([]);
+            setPaging(prev => ({
+                ...prev,
+                pageindex: newPage
+            }));
+        };
     
     const clicktoshowFormoption = ()=>{
         setgetid('')
@@ -58,8 +88,9 @@ const AdminProductComponent:React.FC = () =>{
     
     return (
                     <div className="card shadow mb-4">
+                        <h6 className="table-title m-2 font-weight-bold text-primary mt-2">Product Table</h6>
                         <div className="card-header py-3 d-flex flex-row justify-content-between">
-                            <h6 className="m-0 font-weight-bold text-primary">Product Table</h6>
+                            <SearchInput onSearch={handleSearch} />
                             <button className="button-options" onClick={clicktoshowFormoption}>Create</button> 
                         </div>
                         <div className="card-body">
@@ -101,6 +132,10 @@ const AdminProductComponent:React.FC = () =>{
                                     </tbody>
                                 </table>
                             </div>
+                            <Pagination 
+                                pageSize={paging.pagesize}
+                                onPageChange={handlePageChange}
+                            />
                         </div>
                         <div className="detail-page">
                                 {childpage}

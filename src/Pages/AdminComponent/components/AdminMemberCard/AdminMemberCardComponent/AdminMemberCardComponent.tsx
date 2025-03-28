@@ -1,22 +1,30 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from "react"
 
 
 import AdminMemberCardOptionsComponent from "../AdminMemberCardOptionsComponent/AdminMemberCardOptionsComponent"
 import clsx from 'clsx'
 import { MemberCardModel } from "../../../../../Model/MemberCard/MemberCardModel"
-import { deleteMemberCard, getMemberCard } from "../../../../../Responsitories/MemberCardResponsitory"
+import { deleteMemberCard, getMemberCardPaging } from "../../../../../Responsitories/MemberCardResponsitory"
+import { PagingModel } from "../../../../../Model/Paging/PagingModel"
 
 const AdminMemberCardComponent:React.FC = () =>{
     const [membercards,setMembercards] = useState<MemberCardModel[]>()
     const [showformoptions, setShowFormOptions] = useState(false);
+    const [paging] = useState<PagingModel>({
+        keyword: '',
+        pageindex: 1,
+        pagesize: 10
+    })
     let childpage
     const [getid,setgetid] = useState('');
     useEffect(()=>{
         fetch()
     },[])
     const fetch = async () =>{
-        const data = await getMemberCard()
-        setMembercards(data)
+        await getMemberCardPaging(paging).then((res)=>{
+            setMembercards(res.items)
+        })
     }
     const clicktoshowFormoption = ()=>{
         setgetid('')

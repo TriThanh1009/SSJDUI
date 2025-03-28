@@ -1,15 +1,22 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from "react"
 
 import clsx from 'clsx'
 import AdminCategoryOptionsComponent from "../AdminCategoryOptionsComponent/AdminCategoryOptionsComponent"
 import { CategoryModel } from "../../../../../Model/Category/CategoryModel"
-import { getCategory, deleteCategory } from "../../../../../Responsitories/CategoryResponsitory"
+import {  deleteCategory, getCategoryPaging } from "../../../../../Responsitories/CategoryResponsitory"
+import { PagingModel } from "../../../../../Model/Paging/PagingModel"
 
 const AdminCategoryComponent:React.FC = () =>{
     const[categorys,setcategorys] = useState<CategoryModel[]>()
     const [showformoptions, setShowFormOptions] = useState(false);
     let childpage
     const [getid,setgetid] = useState('');
+    const [paging] = useState<PagingModel>({
+        keyword: '',
+        pageindex: 1,
+        pagesize: 10
+    })
     const clicktoshowFormoption = ()=>{
         setgetid('')
         setShowFormOptions(true)
@@ -25,8 +32,9 @@ const AdminCategoryComponent:React.FC = () =>{
         fetch()
     })
     const fetch = async () =>{
-        const data = await getCategory()
-        setcategorys(data)
+        await getCategoryPaging(paging).then((res)=>{
+            setcategorys(res.items)
+        })
     }
 
     const handleEdit = (id:string)=>{
